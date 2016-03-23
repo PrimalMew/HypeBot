@@ -893,19 +893,23 @@ var commands = {
 		}
 	},
 	"poke": {
-		usage: "[user mention]", description: "Pokes the mentioned user", delete: true,
+		description: "Pokes the mentioned user.",
+		usage: "[user]",
+		deleteCommand: false, cooldown: 10,
 		process: function (bot, msg, suffix) {
-			var randomPoke = Math.random() < 0.5 ? "http://i.imgur.com/J4Vr0Hg.gif" : "http://i.imgur.com/6KpNE1V.gif";
+			var randomPoke = Math.random() < 0.5 ? ":point_right:" : ":point_left:";
 			if (!suffix) {bot.sendMessage(msg, bot.user+" was poked by **"+msg.author.name+"**\n"+randomPoke);}
-			if(suffix && msg.mentions.length === 1) {bot.sendMessage(msg, msg.mentions[0]+" was poked by **"+msg.author.name+"**\n"+randomPoke);}
+			if(suffix && msg.mentions.length === 1) {bot.sendMessage(msg, msg.mentions[0]+" has been poked by **"+msg.author.name+"**\n"+randomPoke);}
 		}
 	},
 	"pet": {
-		usage: "[user mention]", description: "Pet the mentioned user", delete: true,
+		description: "Pets the mentioned user.",
+		usage: "[user]", 
+		deleteCommand: false, cooldown: 10,
 		process: function (bot, msg, suffix) {
-			var randomPoke = Math.random() < 0.5 ? "http://i.imgur.com/f7ByidM.gif" : "http://i.imgur.com/LUpk6b6.gif";
+			var randomPoke = Math.random() < 0.5 ? ":dog:" : ":cat:";
 			if (!suffix) {bot.sendMessage(msg, bot.user+" was petted by **"+msg.author.name+"**\n"+randomPoke);}
-			if(suffix && msg.mentions.length === 1) {bot.sendMessage(msg, msg.mentions[0]+" was petted by **"+msg.author.name+"**\n"+randomPoke);}
+			if(suffix && msg.mentions.length === 1) {bot.sendMessage(msg, msg.mentions[0]+" was pet by **"+msg.author.name+"**\n"+randomPoke);}
 		}
 	},
 	"image": {

@@ -1,8 +1,8 @@
 {
 	"email": "theprimalbot@gmail.com",
 	"password": "Thunder1",
-	"command_prefix": "-*",
-	"mod_command_prefix": "-**",
+	"command_prefix": "*",
+	"mod_command_prefix": "-",
 	"non_essential_event_listeners": true,
 	"log_presence": false,
 	"debug": false,

@@ -125,7 +125,7 @@ var commands = {
 		process: function(bot, msg, suffix) {
 			var toSend = [];
 			if (!suffix) {
-				toSend.push("Use -*help [command] to get info on a specific command.");
+				toSend.push("Use *help [command] to get info on a specific command.");
 				toSend.push("Mod commands can be found with -**help [command].");
 				toSend.push("**|Commands|**\n");
 				toSend.push("`@" + bot.user.username + " text`\n		Talk to HypeBot!");
@@ -229,8 +229,8 @@ var commands = {
 								if (suffix.indexOf("-a") != -1) {
 									var toSend = [];
 									toSend.push("Greetings! I'm **" + bot.user.username + "**. " + msg.author + " invited me here.");
-									toSend.push("You can use -*help to get a list of commands.");
-									toSend.push("If you don't want me here, you can use -*leave to make me leave.");
+									toSend.push("You can use *help to get a list of commands.");
+									toSend.push("If you don't want me here, you can use *leave to make me leave.");
 									bot.sendMessage(server.defaultChannel, toSend);
 								} else { setTimeout(function() { bot.sendMessage(server.defaultChannel, "*Joined on request of " + msg.author + "*"); }, 2000); }
 							}
@@ -665,7 +665,7 @@ var commands = {
 		}
 	},
 	"osu": {
-		desc: "Osu! commands. Use -*help osu",
+		desc: "Osu! commands. Use *help osu",
 		usage: "sig [username] [hex] | best [username] | user [username] | recent [username]",
 		deleteCommand: true,
 		cooldown: 5,

@@ -49,7 +49,7 @@ var commands = {
 		process: function(bot, msg, suffix) {
 			var toSend = [];
 			if (!suffix) {
-				toSend.push("Use -*help [command] to get info on a specific command.");
+				toSend.push("Use -help [command] to get info on a specific command.");
 				toSend.push("");
 				toSend.push("**|Commands|**\n");
 				Object.keys(commands).forEach(function(cmd) {

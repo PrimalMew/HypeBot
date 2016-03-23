@@ -21,7 +21,7 @@ bot.on("debug", (m) => { if (config.debug) { console.log(colors.cDebug(" DEBUG "
 bot.on("ready", () => {
 	bot.forceFetchUsers();
 	bot.setPlayingGame(games[Math.floor(Math.random() * (games.length))]); //set game to a random game from games.json
-	console.log(colors.cGreen("HypeBot.EXE is ready!") + " Listening in on " + bot.channels.length + " channels on " + bot.servers.length + " servers");
+	console.log(colors.cGreen("HypeBot.EXE is ready!") + " Listening in on " + bot.channels.length + " channels on " + bot.servers.length + " server(s).");
 	versioncheck.checkForUpdate((resp) => {
 		if (resp !== null) { console.log(resp); }
 	});
@@ -234,23 +234,23 @@ function carbonInvite(msg) {
 }
 
 function reload() {
-	delete require.cache[require.resolve("./bot/config.json")];
-	config = require("./bot/config.json");
-	delete require.cache[require.resolve("./bot/games.json")];
-	games = require("./bot/games.json").games;
-	delete require.cache[require.resolve("./bot/commands.js")];
-	try { commands = require("./bot/commands.js");
+	delete require.cache[require.resolve("./config/config.json")];
+	config = require("./config/config.json");
+	delete require.cache[require.resolve("./config/games.json")];
+	games = require("./config/games.json").games;
+	delete require.cache[require.resolve("./config/commands.js")];
+	try { commands = require("./config/commands.js");
 	} catch (err) { console.log(colors.cError(" ERROR ") + "Problem loading commands.js: " + err); }
-	delete require.cache[require.resolve("./bot/mod.js")];
-	try {mod = require("./bot/mod.js");
+	delete require.cache[require.resolve("./config/mod.js")];
+	try {mod = require("./config/mod.js");
 	} catch (err) { console.log(colors.cError(" ERROR ") + "Problem loading mod.js: " + err); }
-	delete require.cache[require.resolve("./bot/config.json")];
-	delete require.cache[require.resolve("./bot/versioncheck.js")];
-	versioncheck = require("./bot/versioncheck.js");
-	delete require.cache[require.resolve("./bot/styles.js")];
-	colors = require("./bot/styles.js");
-	delete require.cache[require.resolve("./bot/cleverbot.js")];
-	cleverbot = require("./bot/cleverbot").cleverbot;
+	delete require.cache[require.resolve("./config/config.json")];
+	delete require.cache[require.resolve("./config/versioncheck.js")];
+	versioncheck = require("./config/versioncheck.js");
+	delete require.cache[require.resolve("./config/styles.js")];
+	colors = require("./config/styles.js");
+	delete require.cache[require.resolve("./config/cleverbot.js")];
+	cleverbot = require("./config/cleverbot").cleverbot;
 	console.log(colors.BgGreen(" Module Reload ") + " Success");
 }
 

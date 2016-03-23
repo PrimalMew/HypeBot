@@ -892,6 +892,22 @@ var commands = {
 			}
 		}
 	},
+	"poke": {
+		usage: "[user mention]", description: "Pokes the mentioned user", delete: true,
+		process: function (bot, msg, suffix) {
+			var randomPoke = Math.random() < 0.5 ? "http://i.imgur.com/J4Vr0Hg.gif" : "http://i.imgur.com/6KpNE1V.gif";
+			if (!suffix) {bot.sendMessage(msg, bot.user+" was poked by **"+msg.author.name+"**\n"+randomPoke);}
+			if(suffix && msg.mentions.length === 1) {bot.sendMessage(msg, msg.mentions[0]+" was poked by **"+msg.author.name+"**\n"+randomPoke);}
+		}
+	},
+	"pet": {
+		usage: "[user mention]", description: "Pet the mentioned user", delete: true,
+		process: function (bot, msg, suffix) {
+			var randomPoke = Math.random() < 0.5 ? "http://i.imgur.com/f7ByidM.gif" : "http://i.imgur.com/LUpk6b6.gif";
+			if (!suffix) {bot.sendMessage(msg, bot.user+" was petted by **"+msg.author.name+"**\n"+randomPoke);}
+			if(suffix && msg.mentions.length === 1) {bot.sendMessage(msg, msg.mentions[0]+" was petted by **"+msg.author.name+"**\n"+randomPoke);}
+		}
+	},
 	"image": {
 		desc: "Get an image from Imgur",
 		usage: "<subreddit> [--nsfw] [--day | --week | --month | --year | --all]",

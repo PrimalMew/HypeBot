@@ -221,10 +221,10 @@ var commands = {
 		cooldown: 3,
 		process: function(bot, msg, suffix) {
 			if (!msg.channel.permissionsOf(msg.author).hasPermission("manageRoles") && msg.author.id != config.admin_id) { bot.sendMessage(msg, "⚠ You don't have permission to do that. ⚠", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); });
-			} else if (!msg.channel.permissionsOf(bot.user).hasPermission("manageRoles")) { bot.sendMessage(msg, "⚠ HypeBot.EXE can't kick members. Give it's role the right permissions to do so. ⚠", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); });
+			} else if (!msg.channel.permissionsOf(bot.user).hasPermission("manageRoles")) { bot.sendMessage(msg, "⚠ HypeBot.EXE can't manage roles. Give it's role the right permissions to do so. ⚠", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); });
 			} else if (suffix && msg.mentions.length > 0 && /^(<@\d+>( ?)*)*( ?)*(\d+(.\d+)?)$/.test(suffix.trim())) {
 				var time = parseFloat(suffix.replace(/<@\d+>/g, "").trim());
-				var role = msg.channel.server.roles.find((r) => { return r.name.toLowerCase() === "In Jail" });
+				var role = msg.channel.server.roles.find((r) => { return r.name.toLowerCase() === "jailed" });
 				if (role) {
 					msg.mentions.map((user) => {
 						if (!bot.memberHasRole(user, role)) {
@@ -232,9 +232,9 @@ var commands = {
 						}
 					});
 					unMute(bot, msg, msg.mentions, time, role);
-					bot.sendMessage(msg, msg.author.username + "It is done.", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); });
-				} else { bot.sendMessage(msg, "Role 'In Jail' not found.", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); }); }
-			} else { bot.sendMessage(msg, correctUsage("mute"), (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); }); }
+					bot.sendMessage(msg, msg.author.username + " It is done.", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); });
+				} else { bot.sendMessage(msg, "Role 'Jailed' not found.", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); }); }
+			} else { bot.sendMessage(msg, correctUsage("jail"), (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); }); }
 		}
 	},
 	"unjail": {
@@ -244,18 +244,18 @@ var commands = {
 		cooldown: 3,
 		process: function(bot, msg, suffix) {
 			if (!msg.channel.permissionsOf(msg.author).hasPermission("manageRoles") && msg.author.id != config.admin_id) { bot.sendMessage(msg, "⚠ You don't have permission to do that. ⚠", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); });
-			} else if (!msg.channel.permissionsOf(bot.user).hasPermission("manageRoles")) { bot.sendMessage(msg, "⚠ HypeBot.EXE can't kick members. Give it's role the right permissions to do so. ⚠", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); });
+			} else if (!msg.channel.permissionsOf(bot.user).hasPermission("manageRoles")) { bot.sendMessage(msg, "⚠ HypeBot.EXE can't manage roles. Give it's role the right permissions to do so. ⚠", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); });
 			} else if (suffix && msg.mentions.length > 0) {
-				var role = msg.channel.server.roles.find((r) => { return r.name.toLowerCase() === "In Jail" });
+				var role = msg.channel.server.roles.find((r) => { return r.name.toLowerCase() === "jailed" });
 				if (role) {
 					msg.mentions.map((user) => {
 						if (bot.memberHasRole(user, role)) {
 							bot.removeMemberFromRole(user, role);
 						}
 					});
-					bot.sendMessage(msg, msg.author.username + " 👍", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); });
-				} else { bot.sendMessage(msg, "Role `In Jail` not found.", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); }); }
-			} else { bot.sendMessage(msg, correctUsage("unmute"), (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); }); }
+					bot.sendMessage(msg, msg.author.username + " It is done.", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); });
+				} else { bot.sendMessage(msg, "Role `Jailed` not found.", (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); }); }
+			} else { bot.sendMessage(msg, correctUsage("unjail"), (erro, wMessage) => { bot.deleteMessage(wMessage, {"wait": 10000}); }); }
 		}
 	},
 	"leave": {

@@ -1,14 +1,14 @@
 /* A bot created by PrimalMew.
 Run with "node HypeBot.js --harmony". */
 
-var commands = require("./bot/commands.js");
-var mod = require("./bot/mod.js");
-var config = require("./bot/config.json");
-var games = require("./bot/games.json").games;
-var versioncheck = require("./bot/versioncheck.js");
+var commands = require("./config/commands.js");
+var mod = require("./config/mod.js");
+var config = require("./config/config.json");
+var games = require("./config/games.json").games;
+var versioncheck = require("./config/versioncheck.js");
 var discord = require("discord.js");
-var cleverbot = require("./bot/cleverbot.js").cleverbot;
-var colors = require("./bot/styles.js");
+var cleverbot = require("./config/cleverbot.js").cleverbot;
+var colors = require("./config/styles.js");
 checkConfig();
 
 var lastExecTime = {};
